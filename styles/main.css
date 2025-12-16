@@ -9,3 +9,87 @@ body {
   font-size: 40px;
   font-weight: 700;
 }
+
+/* кнопки */
+.buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.theme-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-buttons button {
+  border: none;
+  border-radius: 10px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.preset-button {
+  margin-left: 10px;
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: white;
+  background-color: rgb(34, 34, 34);
+  cursor: pointer;
+  border: none;
+  width: 120px;
+  border-radius: 10px;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.game-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.add {
+  position: absolute;
+  right: -80px;
+  top: 10px;
+
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: white;
+  background-color: rgb(34, 34, 34);
+  cursor: pointer;
+  border: none;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border-radius: 10px;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.settings {
+  margin-left: auto;
+
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  color: white;
+  background-color: rgb(34, 34, 34);
+  cursor: pointer;
+  border: none;
+  width: auto;
+  height: 50px;
+  border-radius: 10px;
+
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme {
+
+}

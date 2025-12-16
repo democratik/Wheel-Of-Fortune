@@ -1,19 +1,31 @@
+let currentTheme = localStorage.getItem("theme");
+
+if (currentTheme === null) {
+    currentTheme = "light";
+}
+
 const refsForTheme = {
-    light: document.querySelector(".light-mode"),
-    dark: document.querySelector(".dark-mode"),
-    backColor: document.querySelector("body")
+    theme: document.querySelector(".theme-button"),
+    backColor: document.querySelector("body"),
+    title: document.querySelector(".title")
 }
 
-function changeThemeOnDark() {
-    refsForTheme.backColor.style.backgroundColor = "rgb(56, 56, 56)";
+function changeTheme() {
+    currentTheme = localStorage.getItem("theme")
+
+    if (currentTheme === "light") {
+        refsForTheme.backColor.style.backgroundColor = "rgb(32, 32, 32)";
+        refsForTheme.title.style.color = "white"
+        localStorage.setItem("theme", "dark")
+    }else if(currentTheme === "dark"){
+        refsForTheme.backColor.style.backgroundColor = "orange"
+        refsForTheme.title.style.color = "black"
+        localStorage.setItem("theme", "light")
+    }
 }
 
-function changeThemeOnLight() {
-    refsForTheme.backColor.style.backgroundColor = "orange";
-}
 
-refsForTheme.dark.addEventListener("click", changeThemeOnDark);
-refsForTheme.light.addEventListener("click", changeThemeOnLight);
+refsForTheme.theme.addEventListener("click", changeTheme);
 
 
 

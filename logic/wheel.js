@@ -3,7 +3,6 @@ const refs = {
   message: document.querySelector(".massage-on-wheel")
 };
 
-// текст на колесі зникає при натисканні
 function textOnWheel() {
   refs.message.style.display = "none";
 }
