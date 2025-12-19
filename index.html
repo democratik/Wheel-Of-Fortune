@@ -25,11 +25,14 @@
 
     <h1 class="title">Wheel of Fortune</h1>
     <div class="game-container">
-      <div class="wheel"></div>
+      <div style="width: 800px" class="wheel">
+        <canvas id="myChart"></canvas>
+      </div>
       <div class="massage-on-wheel">Tap to spin</div>
       <button class="add">Add</button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/logic/theme.js"></script>
     <script src="./logic/wheel.js"></script>
   </body>
