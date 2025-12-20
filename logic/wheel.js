@@ -14,7 +14,7 @@ const DATA_COUNT = 5;
 const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 };
 
 const data = {
-  labels: ["Red", "Orange", "Yellow", "Green", "Blue"],
+  labels: ["1", "2", "3", "4", "5"],
   datasets: [
     {
       label: "Dataset 1",
@@ -27,6 +27,7 @@ const data = {
 const config = {
   type: "pie",
   data: data,
+  plugins: [ChartDataLabels],
   options: {
     responsive: true,
     plugins: {
@@ -41,6 +42,18 @@ const config = {
       tooltip: {
         enabled: false,
       },
+      datalabels: {
+        color: "#000000ff",
+        anchor: "center",
+        align: "center",
+        formatter: (value, context) => {
+          return context.chart.data.labels[context.dataIndex];
+        },
+        font: {
+          weight: "bold",
+          size: 20,
+        },
+      },
     },
   },
 };
@@ -51,4 +64,13 @@ const config = {
   });
 })();
 
-console.log(Chart);
+let random = Math.random() * 3600;
+
+function onClickWheel() {
+  refs.wheel.style.transition = `transform ${3}s ease-out`;
+  console.log(Math.random(0, 1));
+  refs.wheel.style.transform = `rotate(${random}deg)`;
+  random += Math.random() * 3600;
+}
+
+refs.wheel.addEventListener("click", onClickWheel);

@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/democratik/Wheel-Of-Fortune#readme",
   "dependencies": {
-    "chart.js": "^4.5.1"
+    "chart.js": "^4.5.1",
+    "chartjs-plugin-datalabels": "^2.2.0"
   }
 }

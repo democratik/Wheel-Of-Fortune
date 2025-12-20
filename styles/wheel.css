@@ -2,7 +2,7 @@
   width: 70vh;
   height: 70vh;
   background-color: #fff;
-  border-radius: 500%;
+  border-radius: 50%;
   margin: 0 auto;
 
 } */
@@ -21,4 +21,25 @@
   transform: translate(-50%, -50%);
   z-index: 10;
   pointer-events: none;
+}
+
+.wheel {
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate-animation {
+  animation: linear 1s infinite rotate;
 }
