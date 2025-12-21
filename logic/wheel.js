@@ -1,5 +1,3 @@
-// import Chart from "chart.js/auto";
-
 const refs = {
   wheel: document.querySelector(".wheel"),
   message: document.querySelector(".massage-on-wheel"),
