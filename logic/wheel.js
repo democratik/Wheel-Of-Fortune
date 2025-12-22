@@ -1,7 +1,10 @@
 const refs = {
   wheel: document.querySelector(".wheel"),
   message: document.querySelector(".massage-on-wheel"),
+  arrow: document.querySelector(".arrow"),
 };
+
+const MAX_ROUNDS = 3600;
 
 function textOnWheel() {
   refs.message.style.display = "none";
@@ -62,13 +65,33 @@ const config = {
   });
 })();
 
-let random = Math.random() * 3600;
+let random = Math.floor(
+  Math.random() * (MAX_ROUNDS - (MAX_ROUNDS - 360)) + (MAX_ROUNDS - 360)
+);
 
-function onClickWheel() {
-  refs.wheel.style.transition = `transform ${3}s ease-out`;
-  console.log(Math.random(0, 1));
+function onWheelClick() {
+  refs.wheel.style.transition = `transform ${5}s cubic-bezier(.42,0,.58,1)`;
+  console.log(`random -`, random);
   refs.wheel.style.transform = `rotate(${random}deg)`;
-  random += Math.random() * 3600;
+  random +=
+    Math.random() * (MAX_ROUNDS - (MAX_ROUNDS - 360)) + (MAX_ROUNDS - 360);
 }
 
-refs.wheel.addEventListener("click", onClickWheel);
+refs.wheel.addEventListener("click", onWheelClick);
+
+const callback = (entries, observer) => {
+  entries.forEach((entry) => {
+    console.log(entry);
+  });
+};
+
+const options = {
+  root: refs.wheel,
+  rootMargin: "0px",
+  scrollMargin: "0px",
+  threshold: 1.0,
+};
+
+const observer = new IntersectionObserver(callback, options);
+
+observer.observe(refs.arrow);
