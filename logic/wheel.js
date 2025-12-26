@@ -65,33 +65,28 @@ const config = {
   });
 })();
 
-let random = Math.floor(
-  Math.random() * (MAX_ROUNDS - (MAX_ROUNDS - 360)) + (MAX_ROUNDS - 360)
-);
+let random = 0;
 
 function onWheelClick() {
-  refs.wheel.style.transition = `transform ${5}s cubic-bezier(.42,0,.58,1)`;
-  console.log(`random -`, random);
-  refs.wheel.style.transform = `rotate(${random}deg)`;
-  random +=
+  const randomDeg =
     Math.random() * (MAX_ROUNDS - (MAX_ROUNDS - 360)) + (MAX_ROUNDS - 360);
+  refs.wheel.style.transition = `transform ${5}s cubic-bezier(.42,0,.58,1)`;
+  console.log(`random -`, random % 360);
+  refs.wheel.style.transform = `rotate(-${randomDeg}deg)`;
+  showResult(data.labels.length, randomDeg % 360, random % 360);
+  random += randomDeg + 3600;
+  console.log(`random -`, random % 360, `randomDeg -`, (randomDeg % 360) + 38);
 }
 
 refs.wheel.addEventListener("click", onWheelClick);
 
-const callback = (entries, observer) => {
-  entries.forEach((entry) => {
-    console.log(entry);
-  });
-};
+function showResult(sectorCounts, deg, startPosition) {
+  let sectorSize = 360 / sectorCounts;
+  console.log(sectorSize);
+  console.log(startPosition);
 
-const options = {
-  root: refs.wheel,
-  rootMargin: "0px",
-  scrollMargin: "0px",
-  threshold: 1.0,
-};
-
-const observer = new IntersectionObserver(callback, options);
-
-observer.observe(refs.arrow);
+  if (deg >= 38 && deg < sectorSize + 38) {
+    console.log("first sector");
+  }
+  console.log(deg);
+}
