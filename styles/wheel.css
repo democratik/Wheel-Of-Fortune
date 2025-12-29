@@ -33,6 +33,19 @@
   border-right: 100px solid #d4bf00;
 }
 
+.show-result {
+  position: absolute;
+  background-color: #fff;
+  text-align: center;
+  margin: 0 auto;
+  width: 200px;
+  display: none;
+}
+
+.is-wisible {
+  display: block;
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
