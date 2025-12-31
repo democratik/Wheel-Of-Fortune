@@ -5,40 +5,52 @@ const refs = {
   show: document.querySelector(".show-result"),
 };
 
-const MAX_ROUNDS = 3600;
-
-const wheelData = [
-  { label: "test", color: "red" },
-  { label: "2", color: "orange" },
-  { label: "3", color: "yellow" },
-  { label: "qwerty", color: "green" },
-  { label: "5", color: "violet" },
-  { label: "6", color: "skyblue" },
-  { label: "7", color: "beige" },
+const colors = [
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "purple",
+  "orange",
+  "pink",
+  "cyan",
+  "magenta",
+  "brown",
 ];
 
-function textOnWheel() {
-  refs.message.style.display = "none";
-}
-refs.wheel.addEventListener("click", textOnWheel);
+const wheelData = [
+  { label: "1" },
+  { label: "2" },
+  { label: "3" },
+  { label: "4" },
+  { label: "5" },
+];
 
+const updatedWheelData = wheelData.map((item, index) => {
+  return {
+    ...item,
+    color: colors[index % colors.length],
+  };
+});
+
+const MAX_ROUNDS = 3600;
 const DATA_COUNT = 5;
 const NUMBER_CFG = { count: DATA_COUNT, min: 0, max: 100 };
 const POINTER_POSITION = 38;
 
 const data = {
-  labels: wheelData.map((e) => e.label),
+  labels: updatedWheelData.map((e) => e.label),
   datasets: [
     {
       label: "Dataset 1",
       data: wheelData.map(() => 1),
-      backgroundColor: wheelData.map((e) => e.color),
+      backgroundColor: updatedWheelData.map((e) => e.color),
     },
   ],
 };
 
-console.log(data.labels);
-console.log(data.datasets[0].backgroundColor);
+// console.log(data.labels);
+// console.log(data.datasets[0].backgroundColor);
 
 const config = {
   type: "pie",
@@ -80,6 +92,10 @@ const config = {
   });
 })();
 
+function textOnWheel() {
+  refs.message.style.display = "none";
+}
+
 let random = 0;
 
 function onWheelClick() {
@@ -109,7 +125,7 @@ function showResult(sectorCounts, deg) {
 
   for (let i = 0; i <= sectorCounts; i++) {
     if ((deg >= 0 && deg < sectorSize) || deg > 360) {
-      refs.show.innerHTML = `${wheelData[i].label}`;
+      refs.show.innerHTML = `first section`;
       continue;
     }
     if (deg >= sectorSize * i && deg < sectorSize * i + sectorSize) {
@@ -117,3 +133,5 @@ function showResult(sectorCounts, deg) {
     }
   }
 }
+
+refs.wheel.addEventListener("click", textOnWheel);
